@@ -38,7 +38,7 @@ openApiGenerate {
 compileJava.dependsOn 'openApiGenerate'
 
 clean {
-    delete "$rootDir/spring-boot-microservice-api/generated"
+    delete "$rootDir/gateway-api/generated"
 }
 
 // disable for overall project when running a build

@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: laa-spring-boot-microservice
+    name: laa-ccms-api-gateway
     version: @version@
 
   # example database
@@ -36,7 +36,7 @@ logging:
   level:
     root: ${ROOT_LOGGING_LEVEL:info}
     org.springframework: ${SPRING_LOGGING_LEVEL:info}
-    uk.gov.justice.laa.springboot.microservice: ${APP_LOGGING_LEVEL:info}
+    uk.gov.justice.laa.ccms.gateway: ${APP_LOGGING_LEVEL:info}
   structured:
     format:
       console: ecs
@@ -58,7 +58,7 @@ logging:
   level:
     root: ${ROOT_LOGGING_LEVEL:info}
     org.springframework: ${SPRING_LOGGING_LEVEL:info}
-    uk.gov.justice.laa.springboot.microservice: ${APP_LOGGING_LEVEL:info}
+    uk.gov.justice.laa.ccms.gateway: ${APP_LOGGING_LEVEL:info}
   structured:
     format:
       console: # disables structured logging locally
