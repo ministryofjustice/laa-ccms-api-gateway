@@ -19,13 +19,15 @@ spring:
       ddl-auto: none
 
 management:
-  server:
-    port: 8181 # change to desired port number
-  # specify actuator endpoints to enable
+  endpoint:
+    health:
+      show-details: always
   endpoints:
     web:
       exposure:
-        include: health
+        include:
+          - health
+          - info
 
 sentry:
   dsn: # configure dsn url here
