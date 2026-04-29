@@ -6,7 +6,11 @@ updates:
     schedule:
       interval: "weekly"
     registries: "*"
-    cooldown: 7
+    cooldown:
+      default-days: 0
+      semver-major-days: 14
+      semver-minor-days: 7
+      semver-patch-days: 2
     groups:
       gradle-updates:
         exclude-patterns:
@@ -18,7 +22,11 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    cooldown: 7
+    cooldown:
+      default-days: 0
+      semver-major-days: 14
+      semver-minor-days: 7
+      semver-patch-days: 2
     groups:
       github-actions:
         patterns:
