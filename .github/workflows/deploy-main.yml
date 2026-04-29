@@ -33,37 +33,37 @@ jobs:
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
 
-#  ecr-publish-image:
-#    needs: [ assemble-and-publish ]
-#    uses: ministryofjustice/laa-ccms-common-workflows/.github/workflows/ecr-publish-image.yml@v2
-#    permissions:
-#      contents: read
-#      id-token: write
-#      security-events: write
-#    with:
-#      java_version: '25'
-#      java_distribution: 'corretto'
-#      image_version: ${{ format('{0}-{1}', vars.IMAGE_PREFIX, needs.assemble-and-publish.outputs.published_artifact_version) }}
-#      jar_subproject: 'gateway-service'
-#    secrets:
-#      gh_token: ${{ secrets.GITHUB_TOKEN }}
-#      ecr_repository: ${{ vars.ECR_REPOSITORY }}
-#      ecr_region: ${{ vars.ECR_REGION }}
-#      ecr_role_to_assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
-#      snyk_token: ${{ secrets.snyk_token }}
-#
-#  update-helm-chart:
-#    needs: [ ecr-publish-image ]
-#    uses: ministryofjustice/laa-ccms-common-workflows/.github/workflows/update-helm-chart.yml@v2
-#    with:
-#      helm_charts_repository: 'laa-ccms-caab-helm-charts'
-#      helm_charts_branch: 'development'
-#      service_name: 'laa-ccms-caab-service'
-#      subchart_name: 'caab-assessment-api'
-#      application_version: ${{ needs.ecr-publish-image.outputs.published_image_version }}
-#      github_bot_username: 'laa-ccms-caab-service'
-#    secrets:
-#      gh_token: ${{ secrets.GITHUB_TOKEN }}
-#      github_app_id: ${{ vars.LAA_JAVA_SERVICE_DEPLOYER_APP_ID }}
-#      github_app_private_key: ${{ secrets.LAA_JAVA_SERVICE_DEPLOYER_SERVICE_KEY }}
-#      github_app_organisation: 'ministryofjustice'
+  ecr-publish-image:
+    needs: [ assemble-and-publish ]
+    uses: ministryofjustice/laa-ccms-common-workflows/.github/workflows/ecr-publish-image.yml@v2
+    permissions:
+      contents: read
+      id-token: write
+      security-events: write
+    with:
+      java_version: '25'
+      java_distribution: 'corretto'
+      image_version: ${{ format('{0}-{1}', vars.IMAGE_PREFIX, needs.assemble-and-publish.outputs.published_artifact_version) }}
+      jar_subproject: 'gateway-service'
+    secrets:
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
+      ecr_repository: ${{ vars.ECR_REPOSITORY }}
+      ecr_region: ${{ vars.ECR_REGION }}
+      ecr_role_to_assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
+      snyk_token: ${{ secrets.snyk_token }}
+
+  update-helm-chart:
+    needs: [ ecr-publish-image ]
+    uses: ministryofjustice/laa-ccms-common-workflows/.github/workflows/update-helm-chart.yml@v2
+    with:
+      helm_charts_repository: 'laa-ccms-caab-helm-charts'
+      helm_charts_branch: 'development'
+      service_name: 'laa-ccms-caab-service'
+      subchart_name: 'ccms-api-gateway'
+      application_version: ${{ needs.ecr-publish-image.outputs.published_image_version }}
+      github_bot_username: 'laa-ccms-caab-service'
+    secrets:
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
+      github_app_id: ${{ vars.LAA_JAVA_SERVICE_DEPLOYER_APP_ID }}
+      github_app_private_key: ${{ secrets.LAA_JAVA_SERVICE_DEPLOYER_SERVICE_KEY }}
+      github_app_organisation: 'ministryofjustice'
