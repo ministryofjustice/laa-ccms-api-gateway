@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Entry point for the Spring Boot microservice application.
+ * Entry point for the CCMS API Gateway application.
  */
 @SpringBootApplication
 public class LaaCcmsApiGatewayApplication {
