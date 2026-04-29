@@ -35,6 +35,7 @@ jobs:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
 
   get-branch-ref:
+    permissions: {}
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.meta.outputs.version }}
