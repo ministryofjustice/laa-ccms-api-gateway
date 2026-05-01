@@ -21,5 +21,4 @@ pluginManagement {
 
 rootProject.name = 'laa-ccms-api-gateway'
 
-include 'gateway-api'
 include 'gateway-service'

@@ -35,7 +35,12 @@ jacocoTestCoverageVerification {
 }
 
 dependencies {
-    implementation project(':gateway-api')
+
+    // Ensures compatibility across architectures by conditionally including dependencies
+    if (System.getProperty("os.name").toLowerCase().contains("mac") &&
+    System.getProperty("os.arch").toLowerCase().contains("aarch64")) {
+        runtimeOnly 'io.netty:netty-resolver-dns-native-macos:4.1.107.Final:osx-aarch_64'
+    }
 
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
