@@ -49,7 +49,6 @@ dependencies {
     // Source: https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies
     implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2025.1.1"))
 
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.3'
 
     // Required for tracing information
     implementation 'org.springframework.boot:spring-boot-micrometer-tracing-brave'
@@ -68,7 +67,6 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-restclient'
     testImplementation 'org.springframework.boot:spring-boot-test-autoconfigure'
 
