@@ -15,7 +15,7 @@ spring:
             - id: applications
               uri: http://caab-api:8080/applications
               predicates:
-                - Path=/caab-api/applications/**
+                - Path=/applications/**
 
 management:
   endpoint:
