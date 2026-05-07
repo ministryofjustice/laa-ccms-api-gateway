@@ -35,7 +35,12 @@ jacocoTestCoverageVerification {
 }
 
 dependencies {
-    implementation project(':gateway-api')
+
+    // Ensures compatibility across architectures by conditionally including dependencies
+    if (System.getProperty("os.name").toLowerCase().contains("mac") &&
+    System.getProperty("os.arch").toLowerCase().contains("aarch64")) {
+        runtimeOnly 'io.netty:netty-resolver-dns-native-macos:4.1.107.Final:osx-aarch_64'
+    }
 
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -44,7 +49,6 @@ dependencies {
     // Source: https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies
     implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2025.1.1"))
 
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.3'
 
     // Required for tracing information
     implementation 'org.springframework.boot:spring-boot-micrometer-tracing-brave'
@@ -62,9 +66,9 @@ dependencies {
 
     runtimeOnly 'com.h2database:h2'
 
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
-    testImplementation 'org.springframework.boot:spring-boot-starter-restclient'
+    testImplementation 'org.springframework.boot:spring-boot-resttestclient'
     testImplementation 'org.springframework.boot:spring-boot-test-autoconfigure'
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
