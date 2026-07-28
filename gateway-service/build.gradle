@@ -1,7 +1,7 @@
 plugins {
-    id 'io.freefair.lombok' version '9.4.0'
+    id 'io.freefair.lombok' version '9.5.0'
     id 'uk.gov.laa.springboot.laa-spring-boot-gradle-plugin'
-    id 'io.sentry.jvm.gradle' version '6.5.0'
+    id 'io.sentry.jvm.gradle' version '6.16.0'
 }
 
 // Replaces application.yml @version@  with version from gradle.properties
@@ -42,7 +42,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway-server-webflux'
     // Source: https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies
-    implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2025.1.1"))
+    implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2025.1.2"))
 
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.3'
 
@@ -56,9 +56,9 @@ dependencies {
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
 
     // temporary dependency overrides see README
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.21.2'
-    implementation 'org.apache.tomcat.embed:tomcat-embed-core:11.0.21'
-    implementation 'tools.jackson.core:jackson-core:3.1.2'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.22.1'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-core:11.0.24'
+    implementation 'tools.jackson.core:jackson-core:3.2.1'
 
     runtimeOnly 'com.h2database:h2'
 
